@@ -35,12 +35,15 @@ app.get('/fetch_event_data',(req,res) => {
 });
 
 app.post('/add_event',(req,res) => {
-    fs.readdir(`event_db/${req.query.id}`,(files) => {
-        let new_event_file = `event_db/${req.query.id}/${files.length+1}.json`;
-        fs.writeFile(new_event_file,req.body,'utf-8',(err) => {
-            if (err) throw err;
-        });
+    let userID = req.query.id;
+    let eventInfo = req.query.eventInfo;
+    add_event(id,eventInfo)
+    .then((value) => {
+        res.send('Evento adicionado com sucesso');
     })
+    .catch((value) => {
+        res.status(500).send('Não foi possível adicionar o evento ao servidor');
+    });
 });
 
 app.listen(3000,() => {
@@ -51,7 +54,21 @@ function fetch_event_data(iduser,eventfile){
     return new Promise ((resolve,reject) => {
         fs.readFile(`event_db/${iduser}/${eventfile}`,'utf-8',(err,data) => {
             if (err) reject(null);
-            resolve(JSON.parse(data));
+            else resolve(JSON.parse(data));
         });
     });
 }
+
+function add_event(userID,eventInfo){
+    return new Promise((resolve,reject) => {
+        let new_event_file = `event_db/${userID}/${generateEventID()}.json`;
+        fs.writeFile(new_event_file,JSON.stringify(eventInfo),'utf-8',(err) => {
+            if (err) reject(false);
+            else resolve(true);
+        });
+    })
+}
+
+function generateEventID () {
+    return '_' + Math.random().toString(36).substr(2, 9);
+};
