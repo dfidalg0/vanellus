@@ -12,6 +12,31 @@
 <script src='../packages/timegrid/main.js'></script>
 <script src='../packages/list/main.js'></script>
 <script>
+    function sendForm() {
+        let req_add = new XMLHttpRequest();
+
+        let form_data = document.getElementById('add_event_form');
+
+        hide_add_event_promp();
+
+        req_add.onreadystatechange = function () {
+            console.log(responseText);
+        }
+
+        req_add.open("POST", "/add_event?id=1", true);
+        req_add.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        req_add.send("eventInfo=" + encodeURIComponent(form_data));
+    }
+
+    function hide_add_event_promp(){
+        document.getElementById('add_event_prompt').hidden = true;
+        document.getElementById('mask').hidden = true;
+    }
+
+    function openAddEventPrompt() {
+        document.getElementById('add_event_prompt').hidden = undefined;
+        document.getElementById('mask').hidden = undefined;
+    }
 
     function fetch_events(userID){
         return new Promise ((resolve,reject) => {
@@ -44,17 +69,17 @@
     selectable: true,
     selectMirror: true,
     select: function(arg) {
-        let title = prompt('Event Title:');
-        console.log(new Date(arg.start).toLocaleDateString());
-        if (title) {
-            calendar.addEvent({
-                title: title,
-                start: arg.start,
-                end: arg.end,
-                allDay: arg.allDay
-            })
-        }
-        calendar.unselect()
+        openAddEventPrompt()
+
+        // if (title) {
+        //     calendar.addEvent({
+        //         title: title,
+        //         start: arg.start,
+        //         end: arg.end,
+        //         allDay: arg.allDay
+        //     })
+        // }
+        calendar.unselect();
     },
     editable: true,
     events : events
@@ -64,6 +89,7 @@
     });
 
 </script>
+
 <style>
     body {
     margin: 40px 10px;
@@ -73,8 +99,42 @@
     }
 
     #calendar {
-    max-width: 900px;
-    margin: 0 auto;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    #add_event_prompt{
+        position: fixed;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50%;
+        height: 50%;
+        background-color: #217786;
+        z-index: 3;
+        border-radius: 20px;
+        text-align: center;
+    }
+
+    #mask {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.86);
+        z-index: 2;
+    }
+
+    #add_event_form{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+
+    .form-control {
+        text-align: center;
     }
 </style>
 
@@ -97,6 +157,7 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
 </head>
+
 <body>
   <nav class="navbar navbar-expand navbar-dark bg-yellow static-top" style="position: relative; width: 100%; z-index: 100%; height: 10%">
 
@@ -225,6 +286,21 @@
 
 
 <div id='calendar'></div>
+
+<div id='mask' hidden onclick='hide_add_event_promp()'> </div>
+
+<div id='add_event_prompt' hidden>
+    <form id='add_event_form' action='javascript:void()' onsubmit="sendForm()">
+        <label for="title" class='form-label'>Título do evento</label>
+        <input id='title' type="text" name="title" class='form-control'> <br>
+        <label for="start" class='form-label'>Início</label>
+        <input id='start' type="time" name="start" class='form-control'>
+        <label for="end" class='form-label'>Fim</label>
+        <input id='end' type="time" name="end" class='form-control'> <br>
+
+        <input type="submit" value='Enviar'>
+    </form>
+</div>
 
 </body>
 </html>
