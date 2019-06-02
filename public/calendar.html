@@ -51,7 +51,9 @@
 
         calendar.addEvent(eventInfo);
 
-        document.getElementsByClassName('form-control').value = '';
+        document.getElementById('title').value = '';
+        document.getElementById('start').value = '';
+        document.getElementById('end').value = '';
 
         req_add.send(`start=${eventInfo.start}&end=${eventInfo.end}&title=${eventInfo.title}`);
     }
@@ -327,7 +329,7 @@
 <div id='add_event_prompt' hidden>
     <form id='add_event_form' action='javascript:void();' onsubmit="sendForm()">
         <label for="title" class='form-label'>Título do evento</label>
-        <input id='title' type="text" name="title" class='form-control'> <br>
+        <input id='title' type="text" name="title" class='form-control' autofocus> <br>
         <label for="start" class='form-label'>Início</label>
         <input id='start' type="time" name="start" class='form-control'>
         <label for="end" class='form-label'>Fim</label>
