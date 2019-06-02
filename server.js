@@ -1,6 +1,6 @@
 const express = require('express');
 
-let public_dir = 'startbootstrap-sb-admin-gh-pages';
+let public_dir = 'public';
 
 const app = express();
 app.use(express.static(public_dir));
