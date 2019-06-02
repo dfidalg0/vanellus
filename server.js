@@ -36,6 +36,26 @@ app.get('/fetch_event_data',(req,res) => {
     });
 });
 
+app.get('/fetch_class_data',(req,res) => {
+    fs.readdir(`materias_db/${req.query.id}`,(err,files) => {
+        if (err) throw err;
+
+        let promises = [];
+
+        for (file of files){
+            promises.push(fetch_class_data(req.query.id,file))
+        }
+
+        Promise.all(promises)
+        .then((events) => {
+            res.json(events);
+        })
+        .catch((err) => {
+            res.send(null);
+        })
+    });
+});
+
 app.post('/add_event',(req,res) => {
     let userID = req.query.id;
     let eventInfo = req.body;
@@ -55,6 +75,15 @@ app.listen(port,() => {
 function fetch_event_data(iduser,eventfile){
     return new Promise ((resolve,reject) => {
         fs.readFile(`event_db/${iduser}/${eventfile}`,'utf-8',(err,data) => {
+            if (err) reject(null);
+            else resolve(JSON.parse(data));
+        });
+    });
+}
+
+function fetch_class_data(iduser,classfile){
+    return new Promise ((resolve,reject) => {
+        fs.readFile(`materias_db/${iduser}/${classfile}`,'utf-8',(err,data) => {
             if (err) reject(null);
             else resolve(JSON.parse(data));
         });
