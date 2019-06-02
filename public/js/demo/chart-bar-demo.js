@@ -7,32 +7,32 @@ var ctx = document.getElementById("myBarChart");
 var myLineChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: ["Cálculo I", "Física I", "Álgebra Linear", "Linguagem C","Desenho Técnico","Filosofia"],
     datasets: [{
-      label: "Revenue",
+      label: "Porcentagem de Faltas",
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
+      data: [2, 7, 12, 5,10,14],
     }],
   },
   options: {
     scales: {
       xAxes: [{
         time: {
-          unit: 'month'
+          unit: 'matéria'
         },
         gridLines: {
           display: false
         },
         ticks: {
-          maxTicksLimit: 6
+          maxTicksLimit: 10
         }
       }],
       yAxes: [{
         ticks: {
           min: 0,
-          max: 15000,
-          maxTicksLimit: 5
+          max: 15,
+          maxTicksLimit: 15
         },
         gridLines: {
           display: true
