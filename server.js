@@ -51,7 +51,7 @@ function fetch_event_data(iduser,eventfile){
     return new Promise ((resolve,reject) => {
         fs.readFile(`event_db/${iduser}/${eventfile}`,'utf-8',(err,data) => {
             if (err) reject(null);
-            resolve(data);
+            resolve(JSON.parse(data));
         });
     });
 }
