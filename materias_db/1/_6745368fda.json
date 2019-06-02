@@ -1,13 +1,23 @@
 {
-    "name":"Algebra Linear",
+    "name":"Álgebra Linear",
     "listas":[
         {
             "title": "Lista 1 - Espaços Vetoriais",
             "source": "/download/listas/_lost12345"
         },
         {
-            "title": "Material Complementar - C-Espaços vetoriais",
+            "title": "Material Complementar - Espaços vetoriais complexos",
             "source": "/download/listas/_misterquente"
+        }
+    ],
+    "notes":[
+        {
+            "title":"Video-Aula 2 - Possani",
+            "source": "/download/notas/_scoobyloo"
+        },
+        {
+            "title":"Video-Aula do Renan em 6.0x",
+            "source":"/download/notas/_FredVelma"
         }
     ]
 }

@@ -1,13 +1,23 @@
 {
-    "name":"Física 1 : Eletromagnetismo",
+    "name":"Física 1 : Mecânica",
     "listas":[
         {
-            "title": "Lista 1 - Lei de Coulomb",
+            "title": "Lista 1 - Leis de Newton",
             "source": "/download/listas/_9jk0koh9lg"
         },
         {
-            "title": "Material Complementar - Campo Elétrico",
+            "title": "Material Complementar - Campo Gravitacional",
             "source": "/download/listas/_90johgryu"
+        }
+    ],
+    "notes":[
+        {
+            "title":"Aula do professor João do MIT",
+            "source": "/download/notas/_nfushushg"
+        },
+        {
+            "title":"Uma breve introdução à mecânica lagrangiana",
+            "source":"/download/notas/_hrwb8eht8wh78"
         }
     ]
 }

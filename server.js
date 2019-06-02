@@ -37,22 +37,12 @@ app.get('/fetch_event_data',(req,res) => {
 });
 
 app.get('/fetch_class_data',(req,res) => {
-    fs.readdir(`materias_db/${req.query.id}`,(err,files) => {
-        if (err) throw err;
-
-        let promises = [];
-
-        for (file of files){
-            promises.push(fetch_class_data(req.query.id,file))
-        }
-
-        Promise.all(promises)
-        .then((events) => {
-            res.json(events);
-        })
-        .catch((err) => {
-            res.send(null);
-        })
+    fetch_class_data(req.query.userID,req.query.mid + '.json')
+    .then((result) => {
+        res.json(result);
+    })
+    .catch((err) => {
+        res.send(null);
     });
 });
 
