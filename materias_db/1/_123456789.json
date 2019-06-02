@@ -1,5 +1,13 @@
 {
-    "name":"Física",
-    "tipo":"Exatas",
-    "faltas" : []
+    "name":"Física 1 : Eletromagnetismo",
+    "listas":[
+        {
+            "title": "Lista 1 - Lei de Coulomb",
+            "source": "/download/listas/_9jk0koh9lg"
+        },
+        {
+            "title": "Material Complementar - Campo Elétrico",
+            "source": "/download/listas/_90johgryu"
+        }
+    ]
 }
