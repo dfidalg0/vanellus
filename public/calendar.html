@@ -20,7 +20,7 @@
         hide_add_event_promp();
 
         req_add.onreadystatechange = function () {
-            console.log(responseText);
+            console.log(req_add.responseText);
         }
 
         req_add.open("POST", "/add_event?id=1", true);
@@ -80,17 +80,6 @@
         //     })
         // }
         calendar.unselect();
-        let title = prompt('Event Title:');
-        console.log(new Date(arg.start).toLocaleDateString());
-        if (title) {
-            calendar.addEvent({
-                title: title,
-                start: arg.start,
-                end: arg.end,
-                allDay: arg.allDay
-            })
-        }
-        calendar.unselect()
     },
     editable: true,
     events : events
