@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="icon" href="img/favicon.png" />
-  <title>Quero Ajuda ─ Suporte</title>
+  <title></title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -204,6 +204,7 @@
         document.getElementById('notebox').innerHTML = materia.notes.map((note) =>
             `<a href=${note.source}> ${note.title} </a>`
         ).join('<br>');
+        document.title = "Quero Ajuda - " + materia.name;
     });
   </script>
 </body>
