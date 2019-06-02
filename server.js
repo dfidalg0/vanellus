@@ -14,7 +14,7 @@ app.get('/fetch_user_info',(req,res) => {
     });
 });
 
-app.get('/get_event_data',(req,res) => {
+app.get('/fetch_event_data',(req,res) => {
     fs.readdir(`event_db/${req.query.id}`,(err,files) => {
         if (err) throw err;
 
@@ -32,6 +32,15 @@ app.get('/get_event_data',(req,res) => {
             res.send(null);
         })
     });
+});
+
+app.post('/add_event',(req,res) => {
+    fs.readdir(`event_db/${req.query.id}`,(files) => {
+        let new_event_file = `event_db/${req.query.id}/${files.length+1}.json`;
+        fs.writeFile(new_event_file,req.body,'utf-8',(err) => {
+            if (err) throw err;
+        });
+    })
 });
 
 app.listen(3000,() => {
