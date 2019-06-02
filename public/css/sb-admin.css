@@ -10,6 +10,8 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -6985,7 +6987,7 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #343a40 !important;
+  background-color: #18a1b8 !important;
 }
 
 .bg-yellow{
@@ -10917,4 +10919,6 @@ body.sidebar-toggled footer.sticky-footer {
   }
 }
 
-
+#vanellus{
+  font-weight: bold
+}
