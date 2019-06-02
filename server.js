@@ -10,10 +10,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-app.get('/materia',(req,res) => {
-    
-});
-
 app.get('/fetch_user_info',(req,res) => {
     fs.readFile(`info/${req.query.id}.json`,'utf-8',(err,data) => {
         res.json(data);
@@ -42,8 +38,8 @@ app.get('/fetch_event_data',(req,res) => {
 
 app.post('/add_event',(req,res) => {
     let userID = req.query.id;
-    let eventInfo = req.query.eventInfo;
-    add_event(id,eventInfo)
+    let eventInfo = req.body.eventInfo;
+    add_event(userID,eventInfo)
     .then((value) => {
         res.send('Evento adicionado com sucesso');
     })
