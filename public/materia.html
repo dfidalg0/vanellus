@@ -70,7 +70,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <h6 class="dropdown-header">Exatas</h6>
-          <a class="dropdown-item" href="/materia?id=1&materia=fisica">Física</a>
+          <a class="dropdown-item" href="fisica.html">Física</a>
           <a class="dropdown-item" href="matematica.html">Matemática</a>
           <a class="dropdown-item" href="quimica.html">Química</a>
           <div class="dropdown-divider"></div>
@@ -90,81 +90,6 @@
           <span>Não quero mais</span></a>
       </li>
     </ul>
-
-    <div id="content-wrapper">
-
-      <div class="container-fluid">
-                      <!-- Breadcrumbs-->
-                      <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                          <a href="./index.html">Página Inicial</a>
-                        </li>
-                        <li class="breadcrumb-item active">Quero Faltas</li>
-                      </ol>
-
-                      <!-- Area Chart Example-->
-                      <div class="card mb-3">
-                        <div class="card-header">
-                          <i class="fas fa-chart-area"></i>
-                          Faltas de Março</div>
-                        <div class="card-body">
-                          <canvas id="myAreaChart" width="100%" height="30"></canvas>
-                        </div>
-                        <div class="card-footer small text-muted">Atualizado ontem às 23:59</div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-lg-8">
-                          <div class="card mb-3">
-                            <div class="card-header">
-                              <i class="fas fa-chart-bar"></i>
-                              Faltas no Semestre</div>
-                            <div class="card-body">
-                              <canvas id="myBarChart" width="100%" height="50"></canvas>
-                            </div>
-                            <div class="card-footer small text-muted">Atualizado ontem às 23:59</div>
-                          </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="card mb-3">
-                            <div class="card-header">
-                              <i class="fas fa-chart-pie"></i>
-                              Porcentagem de Faltas por Matérias</div>
-                            <div class="card-body">
-                              <canvas id="myPieChart" width="100%" height="100"></canvas>
-                            </div>
-                            <div class="card-footer small text-muted">Atualizado ontem às 23:59</div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <p class="small text-center text-muted my-5">
-                        <em>More chart examples coming soon...</em>
-                      </p>
-
-                    </div>
-                    <!-- /.container-fluid -->
-
-                    <!-- Sticky Footer -->
-                    <footer class="sticky-footer">
-                      <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                          <span>Copyright © Your Website 2019</span>
-                        </div>
-                      </div>
-                    </footer>
-
-      <!-- Sticky Footer -->
-      <footer class="sticky-footer">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>VallenusChilensis © www.vallenus.com 2019</span>
-          </div>
-        </div>
-      </footer>
-
-    </div>
-    <!-- /.content-wrapper -->
 
   </div>
   <!-- /#wrapper -->
@@ -202,14 +127,15 @@
 
   <!-- Page level plugin JavaScript-->
   <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="vendor/datatables/jquery.dataTables.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin.min.js"></script>
 
   <!-- Demo scripts for this page-->
+  <script src="js/demo/datatables-demo.js"></script>
   <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-bar-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 
