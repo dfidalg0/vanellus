@@ -8,6 +8,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
+app.get('/materia',(req,res) => {
+
+});
+
 app.get('/fetch_user_info',(req,res) => {
     fs.readFile(`info/${req.query.id}.json`,'utf-8',(err,data) => {
         res.json(data);
@@ -61,14 +65,14 @@ function fetch_event_data(iduser,eventfile){
 
 function add_event(userID,eventInfo){
     return new Promise((resolve,reject) => {
-        let new_event_file = `event_db/${userID}/${generateEventID()}.json`;
+        let new_event_file = `event_db/${userID}/${generateID()}.json`;
         fs.writeFile(new_event_file,JSON.stringify(eventInfo),'utf-8',(err) => {
             if (err) reject(false);
             else resolve(true);
         });
-    })
+    });
 }
 
-function generateEventID () {
+function generateID () {
     return '_' + Math.random().toString(36).substr(2, 9);
 };

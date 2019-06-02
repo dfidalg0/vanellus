@@ -18,14 +18,13 @@
             let http = new XMLHttpRequest();
             http.onreadystatechange = function(){
                 resolve(JSON.parse(http.responseText));
-                console.log(http.responseText);
             };
             http.open('GET','/fetch_event_data?id=' + encodeURIComponent(userID));
             http.send();
         });
     }
 
-  document.addEventListener('DOMContentLoaded', async function() {
+    document.addEventListener('DOMContentLoaded', async function() {
     let calendarEl = document.getElementById('calendar');
 
     let events = await fetch_events(1);
@@ -33,56 +32,54 @@
     let today = new Date();
 
     let calendar = new FullCalendar.Calendar(calendarEl, {
-      locale: 'pt',
-      plugins: [ 'interaction', 'dayGrid', 'timeGrid','list' ],
-      header: {
+        locale: 'pt',
+        plugins: [ 'interaction', 'dayGrid', 'timeGrid','list' ],
+        header: {
         left: 'prev,next today',
         center: 'title',
         right: 'dayGridMonth,listYear'
-      },
-      defaultDate: today,
-      navLinks: true, // can click day/week names to navigate views
-      selectable: true,
-      selectMirror: true,
-      select: function(arg) {
+    },
+    defaultDate: today,
+    navLinks: true, // can click day/week names to navigate views
+    selectable: true,
+    selectMirror: true,
+    select: function(arg) {
         let title = prompt('Event Title:');
         if (title) {
-          calendar.addEvent({
-            title: title,
-            start: arg.start,
-            end: arg.end,
-            allDay: arg.allDay
-          })
+            calendar.addEvent({
+                title: title,
+                start: arg.start,
+                end: arg.end,
+                allDay: arg.allDay
+            })
         }
         calendar.unselect()
-      },
-      editable: true,
-      events : events
+    },
+    editable: true,
+    events : events
     });
 
     calendar.render();
-  });
+    });
 
 </script>
 <style>
-
-  body {
+    body {
     margin: 40px 10px;
     padding: 0;
     font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
     font-size: 14px;
-  }
+    }
 
-  #calendar {
+    #calendar {
     max-width: 900px;
     margin: 0 auto;
-  }
-
+    }
 </style>
 </head>
 <body>
 
-  <div id='calendar'></div>
+<div id='calendar'></div>
 
 </body>
 </html>
