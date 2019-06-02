@@ -87,38 +87,40 @@
 
         <!-- Area Chart Example-->
         <div class="card mb-3" style="width: 100%">
-          <center><div class="card-header" style="background-color: #DE9E1F">
+          <center><div class="card-header" style="background-color: #DE9E1F" onclick="clica('content1')">
             <i class="far fa-comments"></i>
             Contato</div></center>
-            <p>Aconteceu algo inesperado? Não se preocupe, você pode entrar em contato com o professor ou coordenador desejado.
+            <div id="content1" style="display: none"><p>Aconteceu algo inesperado? Não se preocupe, você pode entrar em contato com o professor ou coordenador desejado.</div>
         </div>
 
         <div style="width: 100%">
           <div class="card mb-3">
-            <center><div class="card-header" style="background-color: #DE9E1F" onclick="clica('content1')">
+            <center><div class="card-header" style="background-color: #DE9E1F" onclick="clica('content2')">
               <i class="fas fa-briefcase"></i>
               Oportunidades</div></center>
-              <div id="content1" style="visibility: hidden">Está em dúvida se vale a pena seguir essa carreira? Acalme-se, pois selecionamos algumas informações relevantes e que podem
-              sanar a sua dúvida.</div>
+              <div id="content2" style="display: none">Está em dúvida se vale a pena seguir essa carreira? Acalme-se, pois selecionamos algumas informações relevantes e que podem
+              sanar a sua dúvida.
             <div class="card-body">
               <canvas id="myBarChart" width="100%" height="50"></canvas>
-              <script>
-              function clica(i) {
-                  document.getElementById(i).style.visibility='visible';
-              }
-              </script>
-            </div>
+            </div></div>
           </div>
         </div>
         <div style="width: 100%">
           <div class="card mb-3">
-            <center><div class="card-header" style="background-color: #DE9E1F">
+            <center><div class="card-header" style="background-color: #DE9E1F" onclick="clica('content3')">
               <i class="fas fa-heart-broken"></i>
               Reavaliação</div></center>
-              Está definitivamente sentindo que não deve seguir por esse caminho? Não desanime, o que você fez pode ser aproveitado para construir algo que te deixe realmente feliz! Preencha o formulário abaixo para sabermos de forma mais precisa, como podemos te ajudar de acordo com suas preferências e limitações.
+              <div id="content3" style="display: none">Está definitivamente sentindo que não deve seguir por esse caminho? Não desanime, o que você fez pode ser aproveitado para construir algo que te deixe realmente feliz! Preencha o formulário abaixo para sabermos de forma mais precisa, como podemos te ajudar de acordo com suas preferências e limitações.</div>
           </div>
         </div>
-
+        <script>
+          function clica(i) {
+            let x=document.getElementById(i).style.display;
+            if(x=='none') x='block';
+            else x='none';
+            document.getElementById(i).style.display=x;
+          }
+        </script>
       </div>
       <!-- /.container-fluid -->
 
@@ -126,7 +128,7 @@
       <footer class="sticky-footer">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright © Your Website 2019</span>
+            <span>© Vanellus Chilensis - Feito para o Code In Quero 2019 :)</span>
           </div>
         </div>
       </footer>

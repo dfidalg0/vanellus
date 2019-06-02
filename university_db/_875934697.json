@@ -1,0 +1,20 @@
+{
+    "name":"Incubadora de Teologia Agrícola (ITA)",
+    "semestres":{
+        "1":[
+            "Agronomia Industrial",
+            "Ética agrícola",
+            "Máquinas Agrícolas I"
+        ],
+        "2":[
+            "Agronomia Rural",
+            "Sementes I",
+            "Máquinas Agrícolas II"
+        ],
+        "3":[
+            "Sementes II",
+            "Máquinas Agrícolas III",
+            "Álgebra Linear"
+        ]
+    }
+}
