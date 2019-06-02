@@ -25,7 +25,14 @@
 
         req_add.open("POST", "/add_event?id=1", true);
         req_add.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        req_add.send("eventInfo=" + encodeURIComponent(form_data));
+
+        let eventInfo = {
+            start : encodeURIComponent(form_data.start.value),
+            end : encodeURIComponent(form_data.end.value),
+            title: encodeURIComponent(form_data.title.value)
+        }
+
+        req_add.send(`start=${eventInfo.start}&end=${eventInfo.end}&title=${eventInfo.title}`);
     }
 
     function hide_add_event_promp(){
