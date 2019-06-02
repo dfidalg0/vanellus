@@ -12,7 +12,7 @@ var myLineChart = new Chart(ctx, {
       label: "Porcentagem de Faltas",
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
-      data: [2, 7, 12, 5,10,14],
+      data: [2.5, 7, 12, 5,9.4,13],
     }],
   },
   options: {
