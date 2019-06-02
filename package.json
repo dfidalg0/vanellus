@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/diegood12/vanellus#readme",
   "dependencies": {
+    "@fullcalendar/daygrid": "^4.1.0",
     "express": "^4.17.1"
   }
 }
