@@ -11,7 +11,6 @@
 <script src='../packages/daygrid/main.js'></script>
 <script src='../packages/timegrid/main.js'></script>
 <script src='../packages/list/main.js'></script>
-<script src='../packages/core/locale/pt-br.js'></script>
 <script>
 
     function fetch_events(userID){
@@ -19,23 +18,22 @@
             let http = new XMLHttpRequest();
             http.onreadystatechange = function(){
                 resolve(JSON.parse(http.responseText));
-            }
+                console.log(http.responseText);
+            };
             http.open('GET','/fetch_event_data?id=' + encodeURIComponent(userID));
             http.send();
         });
     }
 
   document.addEventListener('DOMContentLoaded', async function() {
-    var calendarEl = document.getElementById('calendar');
+    let calendarEl = document.getElementById('calendar');
 
     let events = await fetch_events(1);
 
-    console.log(events);
+    let today = new Date();
 
-    var today = new Date();
-
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      locale: 'pt-br',
+    let calendar = new FullCalendar.Calendar(calendarEl, {
+      locale: 'pt',
       plugins: [ 'interaction', 'dayGrid', 'timeGrid','list' ],
       header: {
         left: 'prev,next today',
@@ -47,7 +45,7 @@
       selectable: true,
       selectMirror: true,
       select: function(arg) {
-        var title = prompt('Event Title:');
+        let title = prompt('Event Title:');
         if (title) {
           calendar.addEvent({
             title: title,
@@ -59,63 +57,6 @@
         calendar.unselect()
       },
       editable: true,
-      eventLimit: true, // allow "more" link when too many events
-      // events: [
-      //   {
-      //     title: 'All Day Event',
-      //     start: '2019-04-01'
-      //   },
-      //   {
-      //     title: 'Long Event',
-      //     start: '2019-04-07',
-      //     end: '2019-04-10'
-      //   },
-      //   {
-      //     groupId: 999,
-      //     title: 'Repeating Event',
-      //     start: '2019-04-09T16:00:00'
-      //   },
-      //   {
-      //     groupId: 999,
-      //     title: 'Repeating Event',
-      //     start: '2019-04-16T16:00:00'
-      //   },
-      //   {
-      //     title: 'Conference',
-      //     start: '2019-04-11',
-      //     end: '2019-04-13'
-      //   },
-      //   {
-      //     title: 'Meeting',
-      //     start: '2019-04-12T10:30:00',
-      //     end: '2019-04-12T12:30:00'
-      //   },
-      //   {
-      //     title: 'Lunch',
-      //     start: '2019-04-12T12:00:00'
-      //   },
-      //   {
-      //     title: 'Meeting',
-      //     start: '2019-04-12T14:30:00'
-      //   },
-      //   {
-      //     title: 'Happy Hour',
-      //     start: '2019-04-12T17:30:00'
-      //   },
-      //   {
-      //     title: 'Dinner',
-      //     start: '2019-04-12T20:00:00'
-      //   },
-      //   {
-      //     title: 'Birthday Party',
-      //     start: '2019-04-13T07:00:00'
-      //   },
-      //   {
-      //     title: 'Click for Google',
-      //     url: 'http://google.com/',
-      //     start: '2019-04-28'
-      //   }
-      // ]
       events : events
     });
 
