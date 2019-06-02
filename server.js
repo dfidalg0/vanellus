@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 app.get('/materia',(req,res) => {
-
+    
 });
 
 app.get('/fetch_user_info',(req,res) => {
