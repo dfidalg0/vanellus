@@ -6988,6 +6988,10 @@ button.bg-light:focus {
   background-color: #343a40 !important;
 }
 
+.bg-yellow{
+  background-color: #DE9E1F !important;
+}
+
 a.bg-dark:hover, a.bg-dark:focus,
 button.bg-dark:hover,
 button.bg-dark:focus {
@@ -10670,7 +10674,7 @@ body {
 
 .sidebar {
   width: 90px !important;
-  background-color: #212529;
+  background-color: #18A1B8;
   min-height: calc(100vh - 56px);
 }
 
