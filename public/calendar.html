@@ -13,11 +13,26 @@
 <script src='../packages/list/main.js'></script>
 <script>
     let selected;
+    let calendar;
+
+    function formatDate(date) {
+        let d = new Date(date);
+        let month = '' + (d.getMonth() + 1);
+        let day = '' + d.getDate();
+        let year = d.getFullYear();
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
 
     function sendForm() {
         let req_add = new XMLHttpRequest();
 
         let form_data = document.getElementById('add_event_form');
+
+        let date = formatDate(selected);
 
         hide_add_event_promp();
 
@@ -29,10 +44,14 @@
         req_add.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
         let eventInfo = {
-            start : encodeURIComponent(form_data.start.value),
-            end : encodeURIComponent(form_data.end.value),
-            title: encodeURIComponent(form_data.title.value)
+            start : date + 'T' + form_data.start.value,
+            end : date + 'T' + form_data.end.value,
+            title: form_data.title.value
         }
+
+        calendar.addEvent(eventInfo);
+
+        document.getElementsByClassName('form-control').value = '';
 
         req_add.send(`start=${eventInfo.start}&end=${eventInfo.end}&title=${eventInfo.title}`);
     }
@@ -65,7 +84,7 @@
 
     let today = new Date();
 
-    let calendar = new FullCalendar.Calendar(calendarEl, {
+    calendar = new FullCalendar.Calendar(calendarEl, {
         locale: 'pt',
         plugins: [ 'interaction', 'dayGrid', 'timeGrid','list' ],
         header: {
@@ -306,7 +325,7 @@
 <div id='mask' hidden onclick='hide_add_event_promp()'> </div>
 
 <div id='add_event_prompt' hidden>
-    <form id='add_event_form' action='javascript:void()' onsubmit="sendForm()">
+    <form id='add_event_form' action='javascript:void();' onsubmit="sendForm()">
         <label for="title" class='form-label'>Título do evento</label>
         <input id='title' type="text" name="title" class='form-control'> <br>
         <label for="start" class='form-label'>Início</label>
