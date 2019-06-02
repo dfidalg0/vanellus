@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Quero Ajuda ─ Suporte</title>
+  <title>Quero Ajuda ─ Início</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,8 +19,11 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
+
 </head>
-<body>
+
+<body id="page-top">
+
   <nav class="navbar navbar-expand navbar-dark bg-yellow static-top" style="position: relative; width: 100%; z-index: 100%; height: 10%">
 
     <a class="navbar-brand mr-1" href="index.html">Quero Ajuda</a>
@@ -65,7 +68,7 @@
         <div class="dropdown-menu" aria-labelledby="pagesDropdown" style="background-color: #8ee2f0">
           <a class="dropdown-item" href="login.html">Cálculo I</a>
           <a class="dropdown-item" href="register.html">Física I</a>
-          <a class="dropdown-item" href="forgot-password.html">Faltas</a>
+          <a class="dropdown-item" href="forgot-password.html">Álgebra Linear</a>
           <!-- <div class="dropdown-divider"></div> -->
         </div>
       </li>
@@ -74,8 +77,13 @@
           <i class="far fa-calendar-alt"></i>
           <span>Calendário</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="help.html">
+      <li class="nav-item">
+        <a class="nav-link" href="faltas.html">
+          <i class="fas fa-history"></i>
+          <span>Histórico de Faltas</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="materias.html">
           <i class="fas fa-hands-helping"></i>
           <span>Suporte</span></a>
       </li>
@@ -85,44 +93,41 @@
 
       <div class="container-fluid">
 
-        <!-- Area Chart Example-->
-        <div class="card mb-3" style="width: 100%">
-          <center><div class="card-header" style="background-color: #DE9E1F" onclick="clica('content1')">
-            <i class="far fa-comments"></i>
-            Contato</div></center>
-            <div id="content1" style="display: none"><p>Aconteceu algo inesperado? Não se preocupe, você pode entrar em contato com o professor ou coordenador desejado.</div>
-        </div>
-
-        <div style="width: 100%">
-          <div class="card mb-3">
-            <center><div class="card-header" style="background-color: #DE9E1F" onclick="clica('content2')">
-              <i class="fas fa-briefcase"></i>
-              Oportunidades</div></center>
-              <div id="content2" style="display: none">Está em dúvida se vale a pena seguir essa carreira? Acalme-se, pois selecionamos algumas informações relevantes e que podem
-              sanar a sua dúvida.
-            <div class="card-body">
-              <canvas id="myBarChart" width="100%" height="50"></canvas>
-            </div></div>
+        <!-- Icon Cards-->
+        <div class="row">
+          <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card text-white bg-primary o-hidden h-100">
+              <div class="card-body">
+                <div class="card-body-icon">
+                  <i class="fas fa-fw fa-comments"></i>
+                </div>
+                <div class="mr-5">26 Novas Mensagens!</div>
+              </div>
+              <a class="card-footer text-white clearfix small z-1" href="#">
+                <span class="float-left">Ver detalhes</span>
+                <span class="float-right">
+                  <i class="fas fa-angle-right"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card text-white bg-warning o-hidden h-100">
+              <div class="card-body">
+                <div class="card-body-icon">
+                  <i class="fas fa-fw fa-list"></i>
+                </div>
+                <div class="mr-5">11 Novas Atividades</div>
+              </div>
+              <a class="card-footer text-white clearfix small z-1" href="#">
+                <span class="float-left">Ver detalhes</span>
+                <span class="float-right">
+                  <i class="fas fa-angle-right"></i>
+                </span>
+              </a>
+            </div>
           </div>
         </div>
-        <div style="width: 100%">
-          <div class="card mb-3">
-            <center><div class="card-header" style="background-color: #DE9E1F" onclick="clica('content3')">
-              <i class="fas fa-heart-broken"></i>
-              Reavaliação</div></center>
-              <div id="content3" style="display: none">Está definitivamente sentindo que não deve seguir por esse caminho? Não desanime, o que você fez pode ser aproveitado para construir algo que te deixe realmente feliz! Preencha o formulário abaixo para sabermos de forma mais precisa, como podemos te ajudar de acordo com suas preferências e limitações.</div>
-          </div>
-        </div>
-        <script>
-          function clica(i) {
-            let x=document.getElementById(i).style.display;
-            if(x=='none') x='block';
-            else x='none';
-            document.getElementById(i).style.display=x;
-          }
-        </script>
-      </div>
-      <!-- /.container-fluid -->
 
       <!-- Sticky Footer -->
       <footer class="sticky-footer">
@@ -149,15 +154,15 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Já quer sair?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body">Selecione "Sair" abaixo se você estiver pronto para terminar sua sessão atual.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" href="login.html">Sair</a>
         </div>
       </div>
     </div>
@@ -172,14 +177,15 @@
 
   <!-- Page level plugin JavaScript-->
   <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="vendor/datatables/jquery.dataTables.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin.min.js"></script>
 
   <!-- Demo scripts for this page-->
+  <script src="js/demo/datatables-demo.js"></script>
   <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-bar-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 

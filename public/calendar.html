@@ -69,6 +69,7 @@
     selectable: true,
     selectMirror: true,
     select: function(arg) {
+<<<<<<< HEAD
         openAddEventPrompt()
 
         // if (title) {
@@ -80,6 +81,19 @@
         //     })
         // }
         calendar.unselect();
+=======
+        let title = prompt('Event Title:');
+        console.log(new Date(arg.start).toLocaleDateString());
+        if (title) {
+            calendar.addEvent({
+                title: title,
+                start: arg.start,
+                end: arg.end,
+                allDay: arg.allDay
+            })
+        }
+        calendar.unselect()
+>>>>>>> 105cec86b47ccdadd7e3920aad7485aad93189c9
     },
     editable: true,
     events : events
@@ -89,7 +103,10 @@
     });
 
 </script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 105cec86b47ccdadd7e3920aad7485aad93189c9
 <style>
     body {
     margin: 40px 10px;
@@ -99,6 +116,7 @@
     }
 
     #calendar {
+<<<<<<< HEAD
         max-width: 900px;
         margin: 0 auto;
     }
@@ -135,6 +153,10 @@
 
     .form-control {
         text-align: center;
+=======
+    max-width: 900px;
+    margin: 0 auto;
+>>>>>>> 105cec86b47ccdadd7e3920aad7485aad93189c9
     }
 </style>
 
@@ -157,7 +179,10 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
 </head>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 105cec86b47ccdadd7e3920aad7485aad93189c9
 <body>
   <nav class="navbar navbar-expand navbar-dark bg-yellow static-top" style="position: relative; width: 100%; z-index: 100%; height: 10%">
 
@@ -203,7 +228,11 @@
         <div class="dropdown-menu" aria-labelledby="pagesDropdown" style="background-color: #8ee2f0">
           <a class="dropdown-item" href="login.html">Cálculo I</a>
           <a class="dropdown-item" href="register.html">Física I</a>
+<<<<<<< HEAD
           <a class="dropdown-item" href="forgot-password.html">Faltas</a>
+=======
+          <a class="dropdown-item" href="forgot-password.html">Álgebra Linear</a>
+>>>>>>> 105cec86b47ccdadd7e3920aad7485aad93189c9
           <!-- <div class="dropdown-divider"></div> -->
         </div>
       </li>
@@ -213,6 +242,14 @@
           <span>Calendário</span></a>
       </li>
       <li class="nav-item">
+<<<<<<< HEAD
+=======
+        <a class="nav-link" href="faltas.html">
+          <i class="fas fa-history"></i>
+          <span>Histórico de Faltas</span></a>
+      </li>
+      <li class="nav-item">
+>>>>>>> 105cec86b47ccdadd7e3920aad7485aad93189c9
         <a class="nav-link" href="materias.html">
           <i class="fas fa-hands-helping"></i>
           <span>Suporte</span></a>
@@ -287,6 +324,7 @@
 
 <div id='calendar'></div>
 
+<<<<<<< HEAD
 <div id='mask' hidden onclick='hide_add_event_promp()'> </div>
 
 <div id='add_event_prompt' hidden>
@@ -302,5 +340,7 @@
     </form>
 </div>
 
+=======
+>>>>>>> 105cec86b47ccdadd7e3920aad7485aad93189c9
 </body>
 </html>
