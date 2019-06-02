@@ -4,6 +4,8 @@ const fs = require('fs');
 
 const app = express();
 
+let port = process.env.SERVER_PORT || 3000;
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
@@ -50,7 +52,7 @@ app.post('/add_event',(req,res) => {
     });
 });
 
-app.listen(3000,() => {
+app.listen(port,() => {
     console.log('Server Started');
 });
 
