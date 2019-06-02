@@ -1,5 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<head>
+<meta charset='utf-8' />
+<link href='../packages/core/main.css' rel='stylesheet' />
+<link href='../packages/daygrid/main.css' rel='stylesheet' />
+<link href='../packages/timegrid/main.css' rel='stylesheet' />
+<link href='../packages/list/main.css' rel='stylesheet' />
+<script src='../packages/core/main.js'></script>
+<script src='../packages/interaction/main.js'></script>
+<script src='../packages/daygrid/main.js'></script>
+<script src='../packages/timegrid/main.js'></script>
+<script src='../packages/list/main.js'></script>
+<script>
+
+    function fetch_events(userID){
+        return new Promise ((resolve,reject) => {
+            let http = new XMLHttpRequest();
+            http.onreadystatechange = function(){
+                resolve(JSON.parse(http.responseText));
+            };
+            http.open('GET','/fetch_event_data?id=' + encodeURIComponent(userID));
+            http.send();
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', async function() {
+    let calendarEl = document.getElementById('calendar');
+
+    let events = await fetch_events(1);
+
+    let today = new Date();
+
+    let calendar = new FullCalendar.Calendar(calendarEl, {
+        locale: 'pt',
+        plugins: [ 'interaction', 'dayGrid', 'timeGrid','list' ],
+        header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,listYear'
+    },
+    defaultDate: today,
+    navLinks: true, // can click day/week names to navigate views
+    selectable: true,
+    selectMirror: true,
+    select: function(arg) {
+        let title = prompt('Event Title:');
+        console.log(new Date(arg.start).toLocaleDateString());
+        if (title) {
+            calendar.addEvent({
+                title: title,
+                start: arg.start,
+                end: arg.end,
+                allDay: arg.allDay
+            })
+        }
+        calendar.unselect()
+    },
+    editable: true,
+    events : events
+    });
+
+    calendar.render();
+    });
+
+</script>
+<style>
+    body {
+    margin: 40px 10px;
+    padding: 0;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+    }
+
+    #calendar {
+    max-width: 900px;
+    margin: 0 auto;
+    }
+</style>
 
 <head>
 
@@ -9,7 +86,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Quero Ajuda ─ Suporte</title>
+  <title>Quero Ajuda ─ Calendário</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -65,7 +142,7 @@
         <div class="dropdown-menu" aria-labelledby="pagesDropdown" style="background-color: #8ee2f0">
           <a class="dropdown-item" href="login.html">Cálculo I</a>
           <a class="dropdown-item" href="register.html">Física I</a>
-          <a class="dropdown-item" href="forgot-password.html">Faltas</a>
+          <a class="dropdown-item" href="forgot-password.html">Álgebra Linear</a>
           <!-- <div class="dropdown-divider"></div> -->
         </div>
       </li>
@@ -74,8 +151,13 @@
           <i class="far fa-calendar-alt"></i>
           <span>Calendário</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="help.html">
+      <li class="nav-item">
+        <a class="nav-link" href="faltas.html">
+          <i class="fas fa-history"></i>
+          <span>Histórico de Faltas</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="materias.html">
           <i class="fas fa-hands-helping"></i>
           <span>Suporte</span></a>
       </li>
@@ -85,50 +167,13 @@
 
       <div class="container-fluid">
 
-        <!-- Area Chart Example-->
-        <div class="card mb-3" style="width: 100%">
-          <center><div class="card-header" style="background-color: #DE9E1F" onclick="clica('content1')">
-            <i class="far fa-comments"></i>
-            Contato</div></center>
-            <div id="content1" style="display: none"><p>Aconteceu algo inesperado? Não se preocupe, você pode entrar em contato com o professor ou coordenador desejado.</div>
-        </div>
-
-        <div style="width: 100%">
-          <div class="card mb-3">
-            <center><div class="card-header" style="background-color: #DE9E1F" onclick="clica('content2')">
-              <i class="fas fa-briefcase"></i>
-              Oportunidades</div></center>
-              <div id="content2" style="display: none">Está em dúvida se vale a pena seguir essa carreira? Acalme-se, pois selecionamos algumas informações relevantes e que podem
-              sanar a sua dúvida.
-            <div class="card-body">
-              <canvas id="myBarChart" width="100%" height="50"></canvas>
-            </div></div>
-          </div>
-        </div>
-        <div style="width: 100%">
-          <div class="card mb-3">
-            <center><div class="card-header" style="background-color: #DE9E1F" onclick="clica('content3')">
-              <i class="fas fa-heart-broken"></i>
-              Reavaliação</div></center>
-              <div id="content3" style="display: none">Está definitivamente sentindo que não deve seguir por esse caminho? Não desanime, o que você fez pode ser aproveitado para construir algo que te deixe realmente feliz! Preencha o formulário abaixo para sabermos de forma mais precisa, como podemos te ajudar de acordo com suas preferências e limitações.</div>
-          </div>
-        </div>
-        <script>
-          function clica(i) {
-            let x=document.getElementById(i).style.display;
-            if(x=='none') x='block';
-            else x='none';
-            document.getElementById(i).style.display=x;
-          }
-        </script>
-      </div>
-      <!-- /.container-fluid -->
+<div id='calendar'></div>
 
       <!-- Sticky Footer -->
       <footer class="sticky-footer">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>© Vanellus Chilensis - Feito para o Code In Quero 2019 :)</span>
+            <span>© Vanellus Chilensis - Feito para o Code In Quero 2019</span>
           </div>
         </div>
       </footer>
@@ -149,15 +194,15 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Já quer sair?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body">Selecione "Sair" abaixo se você estiver pronto para terminar sua sessão atual.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" href="login.html">Sair</a>
         </div>
       </div>
     </div>
@@ -172,15 +217,19 @@
 
   <!-- Page level plugin JavaScript-->
   <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="vendor/datatables/jquery.dataTables.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin.min.js"></script>
 
   <!-- Demo scripts for this page-->
+  <script src="js/demo/datatables-demo.js"></script>
   <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-bar-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
+
+
+
+<div id='calendar'></div>
 
 </body>
-
 </html>
