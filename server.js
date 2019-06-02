@@ -37,9 +37,8 @@ app.get('/fetch_event_data',(req,res) => {
 });
 
 app.post('/add_event',(req,res) => {
-    console.log('aaa');
     let userID = req.query.id;
-    let eventInfo = req.query.eventInfo;
+    let eventInfo = req.body.eventInfo;
     add_event(userID,eventInfo)
     .then((value) => {
         res.send('Evento adicionado com sucesso');
