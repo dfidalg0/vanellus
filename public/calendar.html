@@ -12,6 +12,8 @@
 <script src='../packages/timegrid/main.js'></script>
 <script src='../packages/list/main.js'></script>
 <script>
+    let selected;
+
     function sendForm() {
         let req_add = new XMLHttpRequest();
 
@@ -77,7 +79,7 @@
     selectMirror: true,
     select: function(arg) {
         openAddEventPrompt()
-
+        selected = new Date(arg.start);
         // if (title) {
         //     calendar.addEvent({
         //         title: title,
